@@ -1,0 +1,10 @@
+<ul>
+	<li data-ng-repeat="message in messages">
+		{{message.content}}
+		<button type="button" data-ng-click="messages.$remove(message)">&minus;</button>
+	</li>
+	<li>
+		<input data-ng-model="newmessage.content" />
+		<button type="button" data-ng-click="messages.$add(newmessage)">&plus;</button>
+	</li>
+</ul>
