@@ -13,7 +13,12 @@
 				db = firebase.database().ref();
 		directive.templateUrl = "js/chat.template.html";
 		directive.link = function($scope, $element, $attr){
-			$scope.messages = $firebaseArray(db.child($attr.chat));
+			var connection = $firebaseArray(db.child($attr["chat"]));
+			$scope.loaded = false;
+			connection.$loaded().then(function(data){
+				$scope.messages = data;
+				$scope.loaded = true;
+			});
 		}
 		return directive;
 	}

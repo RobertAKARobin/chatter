@@ -1,4 +1,5 @@
-<ul>
+<div data-ng-if="!loaded">Loading...</div>
+<ul data-ng-if="loaded">
 	<li data-ng-repeat="message in messages">
 		{{message.content}}
 		<button type="button" data-ng-click="messages.$remove(message)">&minus;</button>
