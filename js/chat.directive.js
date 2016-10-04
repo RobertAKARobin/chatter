@@ -6,32 +6,34 @@
 		.module("chatter")
 		.directive("chat", Chat);
 
-	Chat.$inject = ["$firebaseObject", "$firebaseArray"];
-
-	function Chat($firebaseObject, $firebaseArray){
+	function Chat(){
 		var directive = {
 			templateUrl: "js/chat.template.html",
 			controller: ChatController,
 			controllerAs: "vm",
+			bindToController: true,
+			scope: {
+				chat: "@"
+			},
 			link: linkFunction
 		}
 		return directive;
 
 		function linkFunction(scope, el, attr, vm){
-			var db = firebase.database().ref();
-			var connection = $firebaseArray(db.child(attr["chat"]));
-			connection.$loaded().then(vm.show);
+			vm.messages.$loaded().then(whenLoaded);
+
+			function whenLoaded(){
+				vm.loaded = true;
+			}
 		}
 	}
 
-	function ChatController(){
-		var vm = this;
-		vm.show = showChat;
+	ChatController.$inject = ["$firebaseObject", "$firebaseArray"];
 
-		function showChat(messages){
-			vm.messages = messages;
-			vm.loaded = true;
-		}
+	function ChatController($firebaseObject, $firebaseArray){
+		var vm = this;
+		vm.chatName = vm["chat"];
+		vm.messages = $firebaseArray(firebase.database().ref(vm.chatName));
 	}
 
 })();
