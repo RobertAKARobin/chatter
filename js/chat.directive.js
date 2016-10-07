@@ -10,7 +10,7 @@
 		var directive = {
 			templateUrl: "js/chat.template.html",
 			controller: ChatController,
-			controllerAs: "vm",
+			controllerAs: "chat",
 			bindToController: true,
 			scope: {
 				chat: "@"
@@ -32,8 +32,9 @@
 
 	function ChatController($firebaseObject, $firebaseArray){
 		var vm = this;
+		var chats = firebase.database().ref().child("chats");
 		vm.chatName = vm["chat"];
-		vm.messages = $firebaseArray(firebase.database().ref(vm.chatName));
+		vm.messages = $firebaseArray(chats.child(vm.chatName));
 	}
 
 })();

@@ -1,11 +1,11 @@
-<div data-ng-if="!vm.loaded">Loading...</div>
-<ul data-ng-if="vm.loaded">
-	<li data-ng-repeat="message in vm.messages">
+<div data-ng-if="!chat.loaded">Loading...</div>
+<ul data-ng-if="chat.loaded">
+	<li data-ng-repeat="message in chat.messages">
 		{{message.content}}
-		<button type="button" data-ng-click="vm.messages.$remove(message)">&minus;</button>
+		<button type="button" data-ng-click="chat.messages.$remove(message)">&minus;</button>
 	</li>
 	<li>
-		<input data-ng-model="vm.newmessage.content" />
-		<button type="button" data-ng-click="vm.messages.$add(vm.newmessage)">&plus;</button>
+		<input data-ng-model="chat.newmessage.content" />
+		<button type="button" data-ng-click="chat.messages.$add(chat.newmessage)">&plus;</button>
 	</li>
 </ul>
