@@ -4,11 +4,11 @@
 
 	angular
 		.module("chatter")
-		.directive("chat", Chat);
+		.directive("chat", chat);
 
-	function Chat(){
+	function chat(){
 		var directive = {
-			templateUrl: "js/chat.template.html",
+			templateUrl: "js/chat.directive.html",
 			controller: ChatController,
 			controllerAs: "chat",
 			bindToController: true,
@@ -23,7 +23,7 @@
 			vm.messages.$loaded().then(whenLoaded);
 
 			function whenLoaded(){
-				vm.loaded = true;
+				vm.isLoaded = true;
 			}
 		}
 	}

@@ -8,9 +8,9 @@
 
 	function ChatContainer(){
 		var directive = {
-			templateUrl: "js/chatcontainer.template.html",
+			templateUrl: "js/chat_container.directive.html",
 			controller: ChatContainerController,
-			controllerAs: "chatcontainer",
+			controllerAs: "chatContainer",
 			bindToController: true,
 			link: linkFunction
 		}

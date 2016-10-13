@@ -4,11 +4,11 @@
 
 	angular
 		.module("chatter")
-		.directive("auth", Auth);
+		.directive("auth", auth);
 
-	function Auth(){
+	function auth(){
 		var directive = {
-			templateUrl: "js/auth.template.html",
+			templateUrl: "js/auth.directive.html",
 			controller: AuthController,
 			controllerAs: "auth",
 			bindToController: true,
