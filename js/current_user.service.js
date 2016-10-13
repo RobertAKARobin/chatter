@@ -13,22 +13,30 @@
 				auth = $firebaseAuth();
 		currentUser.isSignedIn = false;
 		currentUser.trySignIn = trySignIn;
+		currentUser.signOut = auth.$signOut;
+		auth.$onAuthStateChanged(authStateChange);
 
 		function trySignIn(){
-			currentUser.errors = null;
-			return auth
-							.$signInWithPopup("google")
-							.then(signInSuccess)
-							.catch(authError);
+			auth
+				.$signInWithPopup("google")
+				.catch(authError);
 		}
 
-		function signInSuccess(response){
-			var result = response.user;
-			currentUser.name				= result.displayName;
-			currentUser.id					= result.uid;
-			currentUser.email				= result.email;
-			currentUser.photoURL		= result.photoURL;
-			currentUser.isSignedIn	= true;
+		function authStateChange(user){
+			currentUser.errors = null;
+			if(user){
+				currentUser.isSignedIn = true;
+				populateCurrentUser(user);
+			}else{
+				currentUser.isSignedIn = false;
+			}
+		}
+
+		function populateCurrentUser(user){
+			currentUser.name				= user.displayName;
+			currentUser.id					= user.uid;
+			currentUser.email				= user.email;
+			currentUser.photoURL		= user.photoURL;
 		}
 
 		function authError(error){

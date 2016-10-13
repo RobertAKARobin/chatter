@@ -8,7 +8,8 @@
 		</ul>
 	</div>
 	<div data-ng-if="auth.user.isSignedIn">
+		<img data-ng-src="{{auth.user.photoURL}}" height="50" />
 		Welcome {{auth.user.name}}!
-		<img data-ng-src="{{auth.user.photoURL}}" />
+		<a href="#" data-ng-click="auth.user.signOut()">Sign out</a>
 	</div>
 </div>
