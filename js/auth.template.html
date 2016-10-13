@@ -1,3 +1,14 @@
 <div>
-	<a href="#" data-ng-click="auth.sign_in()">Sign in</a>
+	<div data-ng-if="!auth.user.isSignedIn">
+		<a href="#" data-ng-click="auth.trySignIn()">Sign in</a>
+		<ul data-ng-show="auth.user.errors">
+			<li data-ng-repeat="error in auth.user.errors">
+				{{error.message}}
+			</li>
+		</ul>
+	</div>
+	<div data-ng-if="auth.user.isSignedIn">
+		Welcome {{auth.user.name}}!
+		<img data-ng-src="{{auth.user.photoURL}}" />
+	</div>
 </div>

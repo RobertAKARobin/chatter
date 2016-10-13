@@ -21,19 +21,15 @@
 		}
 	}
 
-	AuthController.$inject = ["$firebaseAuth"];
+	AuthController.$inject = ["currentUser"];
 
-	function AuthController($firebaseAuth){
+	function AuthController(currentUser){
 		var vm = this;
-		var auth = $firebaseAuth();
-		vm.sign_in = signIn;
+		vm.user = currentUser;
+		vm.trySignIn = trySignIn;
 
-		function signIn(){
-			auth.$signInWithPopup("google").then(function(){
-				console.log(arguments)
-			}).catch(function() {
-				console.log(arguments)
-			});
+		function trySignIn(){
+			currentUser.trySignIn();
 		}
 	}
 
