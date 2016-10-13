@@ -11,14 +11,9 @@
 			templateUrl: "js/chat_container.directive.html",
 			controller: ChatContainerController,
 			controllerAs: "chatContainer",
-			bindToController: true,
-			link: linkFunction
+			bindToController: true
 		}
 		return directive;
-
-		function linkFunction(){
-
-		}
 	}
 
 	function ChatContainerController(){
