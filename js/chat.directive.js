@@ -6,7 +6,7 @@
 		.module("chatter")
 		.directive("chat", chat);
 
-	function chat(){
+	function chat(fbdata){
 		var directive = {
 			templateUrl: "js/chat.directive.html",
 			controller: ChatController,
@@ -28,13 +28,11 @@
 		}
 	}
 
-	ChatController.$inject = ["$firebaseObject", "$firebaseArray"];
+	ChatController.$inject = ["fbdata"];
 
-	function ChatController($firebaseObject, $firebaseArray){
+	function ChatController(fbdata){
 		var vm = this;
-		var chats = firebase.database().ref().child("chats");
-		vm.chatName = vm["chat"];
-		vm.messages = $firebaseArray(chats.child(vm.chatName));
+		vm.messages = fbdata.getChat(vm.chat);
 	}
 
 })();
