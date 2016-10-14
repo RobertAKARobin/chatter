@@ -2,11 +2,11 @@
 <div data-ng-if="!chat.isLoaded">Loading...</div>
 <ul data-ng-if="chat.isLoaded">
 	<li data-ng-repeat="message in chat.messages">
+		<button type="button" data-ng-if="currentUser.isSignedIn" data-ng-click="chat.messages.$remove(message)">&minus;</button>
 		{{message.content}}
-		<button type="button" data-ng-click="chat.messages.$remove(message)">&minus;</button>
 	</li>
-	<li>
-		<input data-ng-model="chat.newmessage.content" />
+	<li data-ng-if="currentUser.isSignedIn">
 		<button type="button" data-ng-click="chat.messages.$add(chat.newmessage)">&plus;</button>
+		<input data-ng-model="chat.newmessage.content" />
 	</li>
 </ul>
