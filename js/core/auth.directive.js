@@ -3,12 +3,12 @@
 (function(){
 
 	angular
-		.module("chatter")
+		.module("app.core")
 		.directive("auth", auth);
 
 	function auth(){
 		var directive = {
-			templateUrl: "js/auth.directive.html"
+			templateUrl: "js/core/auth.directive.html"
 		}
 		return directive;
 	}
