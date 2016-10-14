@@ -6,7 +6,9 @@
 		.module("chatter")
 		.directive("chatContainer", chatContainer);
 
-	function chatContainer(){
+	chatContainer.$inject = ["fbdata"];
+
+	function chatContainer(fbdata){
 		var directive = {
 			templateUrl: "js/chat_container.directive.html",
 			link: linkFunction
@@ -15,11 +17,14 @@
 
 		function linkFunction($scope, $el, $attr){
 			var chatContainer = {};
-			chatContainer.chats = [
-				"foo",
-				"bar"
-			];
+			chatContainer.chats = fbdata.load("chat_info");
+			chatContainer.addNewChat = addNewChat;
 			$scope.chatContainer = chatContainer;
+
+			function addNewChat(){
+				chatContainer.chats.$add(chatContainer.newChat);
+				chatContainer.newChat = {};
+			}
 		}
 	}
 

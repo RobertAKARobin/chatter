@@ -1,3 +1,9 @@
-<div data-ng-repeat="chat in chatContainer.chats">
-	<div data-chat="{{chat}}"></div>
-</div>
+<ul>
+	<li>
+		<input data-ng-model="chatContainer.newChat.name" />
+		<button data-ng-click="chatContainer.addNewChat()">&plus;</button>
+	</li>
+	<li data-ng-repeat="chat in chatContainer.chats">
+		<div data-chat="{{chat}}"></div>
+	</li>
+</ul>

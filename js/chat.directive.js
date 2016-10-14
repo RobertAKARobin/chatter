@@ -17,10 +17,10 @@
 
 		function linkFunction($scope, $el, $attr){
 			var chat = {};
-			chat.name = $attr.chat;
-			chat.messages = fbdata.getChat(chat.name);
-			chat.messages.$loaded().then(whenLoaded);
-			$scope.chat = chat;
+			// chat.name = $attr.chat;
+			// chat.messages = fbdata.load(chat.name);
+			// chat.messages.$loaded().then(whenLoaded);
+			// $scope.chat = chat;
 
 			function whenLoaded(){
 				chat.isLoaded = true;
