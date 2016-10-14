@@ -6,33 +6,26 @@
 		.module("chatter")
 		.directive("chat", chat);
 
+	chat.$inject = ["fbdata"];
+
 	function chat(fbdata){
 		var directive = {
 			templateUrl: "js/chat.directive.html",
-			controller: ChatController,
-			controllerAs: "chat",
-			bindToController: true,
-			scope: {
-				chat: "@"
-			},
 			link: linkFunction
 		}
 		return directive;
 
-		function linkFunction(scope, el, attr, vm){
-			vm.messages.$loaded().then(whenLoaded);
+		function linkFunction($scope, $el, $attr){
+			var chat = {};
+			chat.name = $attr.chat;
+			chat.messages = fbdata.getChat(chat.name);
+			chat.messages.$loaded().then(whenLoaded);
+			$scope.chat = chat;
 
 			function whenLoaded(){
-				vm.isLoaded = true;
+				chat.isLoaded = true;
 			}
 		}
-	}
-
-	ChatController.$inject = ["fbdata"];
-
-	function ChatController(fbdata){
-		var vm = this;
-		vm.messages = fbdata.getChat(vm.chat);
 	}
 
 })();

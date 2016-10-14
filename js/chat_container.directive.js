@@ -4,24 +4,23 @@
 
 	angular
 		.module("chatter")
-		.directive("chatContainer", ChatContainer);
+		.directive("chatContainer", chatContainer);
 
-	function ChatContainer(){
+	function chatContainer(){
 		var directive = {
 			templateUrl: "js/chat_container.directive.html",
-			controller: ChatContainerController,
-			controllerAs: "chatContainer",
-			bindToController: true
+			link: linkFunction
 		}
 		return directive;
-	}
 
-	function ChatContainerController(){
-		var vm = this;
-		vm.chats = [
-			"foo",
-			"bar"
-		]
+		function linkFunction($scope, $el, $attr){
+			var chatContainer = {};
+			chatContainer.chats = [
+				"foo",
+				"bar"
+			];
+			$scope.chatContainer = chatContainer;
+		}
 	}
 
 })();
