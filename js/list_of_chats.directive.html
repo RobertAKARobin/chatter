@@ -1,0 +1,9 @@
+<ul>
+	<li>
+		<input data-ng-model="listOfChats.new.name" />
+		<button data-ng-click="listOfChats.add()">&plus;</button>
+	</li>
+	<li data-ng-repeat="chat in listOfChats">
+		<div data-chat="{{chat}}"></div>
+	</li>
+</ul>
