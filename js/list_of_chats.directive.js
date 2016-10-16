@@ -16,14 +16,14 @@
 		return directive;
 
 		function linkFunction($scope, $el, $attr){
-			var listOfChats = fbdata.load("list_of_chats");
-			listOfChats.new = {}
-			listOfChats.add = add;
-			$scope.listOfChats = listOfChats;
+			var list = fbdata.load("list_of_chats");
+			list.newChat = {}
+			list.addNewChat = addNewChat;
+			$scope.list = list;
 
-			function add(){
-				listOfChats.$add(listOfChats.new);
-				listOfChats.new = {};
+			function addNewChat(){
+				list.$add(list.newChat);
+				list.newChat = {};
 			}
 		}
 	}
