@@ -1,0 +1,21 @@
+{
+  "rules": {
+		".read": true,
+		".write": "auth !== null",
+    "list_of_chats": {
+			"$chat": {
+			}
+    },
+		"chat": {
+			"$chat": {
+				"messages": {
+					"$message": {
+						"content": {
+							".validate": "newData.val().length > 0"
+						}
+					}
+				}
+			}
+		}
+  }
+}
