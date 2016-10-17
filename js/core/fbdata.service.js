@@ -6,19 +6,16 @@
 		.module("chatter")
 		.service("fbdata", fbdata);
 
-	fbdata.$inject = ["$firebaseObject", "$firebaseArray"];
+	function fbdata(){
 
-	function fbdata($firebaseObject, $firebaseArray){
+		var service = this;
 		var root = firebase.database().ref();
-		var service = {
-			load: load
-		};
-		return service;
+		service.id = id;
 
-		function load(path, type){
-			var fbType = (type == "obj" ? $firebaseObject : $firebaseArray);
-			return fbType(root.child(path));
+		function id(path){
+			return root.child(path);
 		}
+
 	}
 
 })();

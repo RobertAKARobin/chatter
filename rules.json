@@ -2,11 +2,11 @@
   "rules": {
 		".read": true,
 		".write": "auth !== null",
-    "list_of_chats": {
+    "chat_list": {
 			"$chat": {
 			}
     },
-		"chat": {
+		"chats": {
 			"$chat": {
 				"messages": {
 					"$message": {

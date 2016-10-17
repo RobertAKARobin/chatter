@@ -6,9 +6,9 @@
 		.module("chatter")
 		.directive("chat", chat);
 
-	chat.$inject = ["fbdata"];
+	chat.$inject = ["Chat"];
 
-	function chat(fbdata){
+	function chat(Chat){
 		var directive = {
 			templateUrl: "js/chat.directive.html",
 			link: linkFunction
@@ -16,7 +16,9 @@
 		return directive;
 
 		function linkFunction($scope, $el, $attr){
-			var chat = {};
+			var $id = $attr.chat;
+			var chat = Chat.get($id);
+			console.log(chat)
 			// chat.name = $attr.chat;
 			// chat.messages = fbdata.load(chat.name);
 			// chat.messages.$loaded().then(whenLoaded);
