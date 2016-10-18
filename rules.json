@@ -1,21 +1,23 @@
 {
-  "rules": {
+	"rules": {
 		".read": true,
 		".write": "auth !== null",
-    "chat_list": {
+		"chat_infos": {
 			"$chat": {
 			}
-    },
-		"chats": {
+		},
+		"chat_messages": {
 			"$chat": {
-				"messages": {
-					"$message": {
-						"content": {
-							".validate": "newData.val().length > 0"
-						}
-					}
+				"$message": {
+					".validate": "newData.val().length > 0"
+				}
+			}
+		},
+		"chat_users": {
+			"$chat": {
+				"$user": {
 				}
 			}
 		}
-  }
+	}
 }

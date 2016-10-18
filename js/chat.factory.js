@@ -6,9 +6,9 @@
 		.module("chatter")
 		.factory("Chat", Chat);
 
-	Chat.$inject = ["$firebaseObject", "fbdata", "ChatListItem"];
+	Chat.$inject = ["$firebaseObject", "fbdata", "ChatList"];
 
-	function Chat($firebaseObject, fbdata, ChatListItem){
+	function Chat($firebaseObject, fbdata, ChatList){
 
 		var Chat = ChatClass();
 		return Chat;
@@ -23,7 +23,7 @@
 			function create(chat){
 				var chatData = Chat.sanitize(chat);
 				var chat = Chat.ref.push(chatData);
-				var chatListItem = ChatListItem.create(chatData);
+				var chatListItem = ChatList.add(chatData);
 				chat.update({chat_list_id: chatListItem.key});
 				chatListItem.update({chat_id: chat.key});
 				return chat;
