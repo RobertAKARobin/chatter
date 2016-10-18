@@ -6,9 +6,9 @@
 		.module("chatter")
 		.directive("chatNew", chatNew);
 
-	chatNew.$inject = ["Chat"];
+	chatNew.$inject = ["ChatNew"];
 
-	function chatNew(Chat){
+	function chatNew(ChatNew){
 		var directive = {
 			templateUrl: "js/chat_new.directive.html",
 			link: linkFunction
@@ -16,7 +16,7 @@
 		return directive;
 
 		function linkFunction($scope, $el, $attr){
-			var chat = Chat.new();
+			var chat = ChatNew.create();
 			$scope.chat = chat;
 		}
 	}

@@ -10,17 +10,18 @@
 
 	function ChatList($firebaseArray, fbdata){
 
-		var ChatList = $firebaseArray.$extend(ChatListPrototype());
-		ChatList.ref = fbdata.id("chat_list");
-		ChatList.load = load;
+		var ChatList = ChatListClass();
 		return ChatList;
 
-		function load(){
-			return new ChatList(ChatList.ref);
-		}
+		function ChatListClass(){
+			var pub = $firebaseArray.$extend(ChatListPrototype());
+			pub.ref = fbdata.id("chat_list");
+			pub.load = load;
+			return pub;
 
-		function newChat(){
-
+			function load(){
+				return new ChatList(ChatList.ref);
+			}
 		}
 
 		function ChatListPrototype(){

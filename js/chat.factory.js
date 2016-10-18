@@ -6,33 +6,37 @@
 		.module("chatter")
 		.factory("Chat", Chat);
 
-	Chat.$inject = ["$firebaseObject", "fbdata", "ChatList"];
+	Chat.$inject = ["$firebaseObject", "fbdata", "ChatListItem"];
 
-	function Chat($firebaseObject, fbdata, ChatList){
+	function Chat($firebaseObject, fbdata, ChatListItem){
 
-		var Chat = angular.extend(
-			$firebaseObject.$extend(ChatPrototype()),
-			ChatClass()
-		);
+		var Chat = ChatClass();
 		return Chat;
 
 		function ChatClass(){
-			var pub = {};
+			var pub = $firebaseObject.$extend(ChatPrototype());
 			pub.ref = fbdata.id("chat");
-			pub.new = newChat;
+			pub.create = create;
+			pub.sanitize = sanitize;
 			return pub;
 
-			function newChat(){
-				return {
-					save: saveNewChat
-				}
+			function create(chat){
+				var chatData = Chat.sanitize(chat);
+				return Chat.ref.push(chatData);
 			}
 
-			function saveNewChat(){
-				var chat = this;
-				chat.save = null;
-				Chat.ref.push(chat);
-				ChatList.ref.push(chat);
+			function sanitize(object){
+				var output = {},
+						property,
+						properties = [
+					"name",
+					"chat_list_id"
+				];
+				for(var i = 0, l = properties.length; i < l; i++){
+					property = properties[i];
+					output[property] = (object[property] || "");
+				}
+				return output;
 			}
 		}
 
