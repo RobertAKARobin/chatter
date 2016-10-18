@@ -22,7 +22,11 @@
 
 			function create(chat){
 				var chatData = Chat.sanitize(chat);
-				return Chat.ref.push(chatData);
+				var chat = Chat.ref.push(chatData);
+				var chatListItem = ChatListItem.create(chatData);
+				chat.update({chat_list_id: chatListItem.key});
+				chatListItem.update({chat_id: chat.key});
+				return chat;
 			}
 
 			function sanitize(object){
