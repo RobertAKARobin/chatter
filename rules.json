@@ -5,9 +5,12 @@
 		"convo": {
 			"convos": {
 				"$convo": {
-					"host": "",
-					"first_message": "",
-					"last_message": "",
+					"first_message": {
+
+					},
+					"last_message": {
+						
+					},
 					"tags": {
 
 					}
@@ -18,7 +21,10 @@
 					"convo_id": "",
 					"messages": {
 						"$message": {
-							".validate": "newData.val().length > 0"
+							"content": "",
+							"timestamp": "",
+							"user_id": "",
+							".validate": "newData.val().content.length > 0"
 						}
 					}
 				}

@@ -14,7 +14,8 @@
 		currentUser.isSignedIn = false;
 		currentUser.trySignIn = trySignIn;
 		currentUser.signOut = auth.$signOut;
-		auth.$onAuthStateChanged(authStateChange);
+		currentUser.onChange = auth.$onAuthStateChanged;
+		currentUser.onChange(authStateChange);
 
 		function trySignIn(){
 			auth

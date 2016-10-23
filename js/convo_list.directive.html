@@ -1,8 +1,11 @@
 <ul>
-	<li>
+	<li data-ng-if="currentUser.isSignedIn">
 		<div data-convo-new></div>
 	</li>
 	<li data-ng-repeat="convo in list">
-		<h2>{{convo.name}}</h2>
+		<h2><a href="#">{{convo.first_message.content}}</a></h2>
+		by <a href="#">{{convo.first_message.user_id}}</a>
+		on {{convo.first_message.timestamp | date}}
+		</a>
 	</li>
 </ul>

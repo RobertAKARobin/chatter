@@ -8,7 +8,7 @@
 
 	convoNew.$inject = ["Convo"];
 
-	function convoNew(Convo){
+	function convoNew(Convo, currentUser){
 		var directive = {
 			templateUrl: "js/convo_new.directive.html",
 			link: linkFunction
@@ -16,13 +16,8 @@
 		return directive;
 
 		function linkFunction($scope, $el, $attr){
-			var convo = {};
+			var convo = new Convo();
 			$scope.convo = convo;
-			convo.save = save;
-
-			function save(){
-				Convo.save(convo.data);
-			}
 		}
 	}
 
