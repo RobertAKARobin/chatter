@@ -3,7 +3,7 @@
 (function(){
 
 	angular
-		.module("chatter")
+		.module("app.core")
 		.service("fbdata", fbdata);
 
 	function fbdata(){

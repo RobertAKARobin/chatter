@@ -4,19 +4,19 @@
 
 	angular
 		.module("chatter")
-		.directive("chatList", chatList);
+		.directive("convoList", convoList);
 
-	chatList.$inject = ["ChatList"];
+	convoList.$inject = ["Convo"];
 
-	function chatList(ChatList){
+	function convoList(Convo){
 		var directive = {
-			templateUrl: "js/chat_list.directive.html",
+			templateUrl: "js/convo_list.directive.html",
 			link: linkFunction
 		}
 		return directive;
 
 		function linkFunction($scope, $el, $attr){
-			var list = ChatList.load();
+			var list = Convo.find_all();
 			$scope.list = list;
 		}
 	}

@@ -2,20 +2,35 @@
 	"rules": {
 		".read": true,
 		".write": "auth !== null",
-		"chat_infos": {
-			"$chat": {
-			}
-		},
-		"chat_messages": {
-			"$chat": {
-				"$message": {
-					".validate": "newData.val().length > 0"
+		"convo": {
+			"convos": {
+				"$convo": {
+					"host": "",
+					"first_message": "",
+					"last_message": "",
+					"tags": {
+
+					}
 				}
-			}
-		},
-		"chat_users": {
-			"$chat": {
-				"$user": {
+			},
+			"messages": {
+				"$convo": {
+					"convo_id": "",
+					"messages": {
+						"$message": {
+							".validate": "newData.val().length > 0"
+						}
+					}
+				}
+			},
+			"users": {
+				"$convo": {
+					"convo_id": "",
+					"users": {
+						"$user": {
+
+						}
+					}
 				}
 			}
 		}

@@ -6,21 +6,19 @@
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/firebase/firebase.js"></script>
 		<script src="bower_components/angularfire/dist/angularfire.js"></script>
-		<script src="js/index.js"></script>
 		<script src="js/core/core.module.js"></script>
 		<script src="js/core/fbdata.service.js"></script>
 		<script src="js/core/current_user.service.js"></script>
 		<script src="js/core/auth.directive.js"></script>
-		<script src="js/chat_list.directive.js"></script>
-		<script src="js/chat_list.factory.js"></script>
-		<script src="js/chat_new.directive.js"></script>
-		<script src="js/chat.directive.js"></script>
-		<script src="js/chat.factory.js"></script>
+		<script src="js/chatter.module.js"></script>
+		<script src="js/convo.factory.js"></script>
+		<script src="js/convo_new.directive.js"></script>
+		<script src="js/convo_list.directive.js"></script>
   </head>
   <body data-ng-app="chatter">
     <h1>Chatter</h1>
 		<div data-auth></div>
 
-		<div data-chat-list></div>
+		<div data-convo-list></div>
   </body>
 </html>
