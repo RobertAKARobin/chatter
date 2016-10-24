@@ -6,16 +6,17 @@
 		.module("app.core")
 		.service("currentUser", currentUser);
 
-	currentUser.$inject = ["$firebaseAuth"];
+	currentUser.$inject = ["$firebaseAuth", "User"];
 
-	function currentUser($firebaseAuth){
-		var currentUser = this,
+	function currentUser($firebaseAuth, User){
+		var currentUser = new User(),
 				auth = $firebaseAuth();
 		currentUser.isSignedIn = false;
 		currentUser.trySignIn = trySignIn;
 		currentUser.signOut = auth.$signOut;
 		currentUser.onChange = auth.$onAuthStateChanged;
 		currentUser.onChange(authStateChange);
+		return currentUser;
 
 		function trySignIn(){
 			auth
@@ -23,21 +24,16 @@
 				.catch(authError);
 		}
 
-		function authStateChange(user){
+		function authStateChange(userData){
 			currentUser.errors = null;
-			if(user){
+			if(userData){
 				currentUser.isSignedIn = true;
-				populateCurrentUser(user);
+				currentUser.lastSignedIn = Date.now();
+				currentUser.populate(userData);
+				currentUser.update();
 			}else{
 				currentUser.isSignedIn = false;
 			}
-		}
-
-		function populateCurrentUser(user){
-			currentUser.name				= user.displayName;
-			currentUser.id					= user.uid;
-			currentUser.email				= user.email;
-			currentUser.photoURL		= user.photoURL;
 		}
 
 		function authError(error){

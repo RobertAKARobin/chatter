@@ -16,7 +16,7 @@
 		return directive;
 
 		function linkFunction($scope, $el, $attr){
-			var list = Convo.find_all();
+			var list = Convo.read_list();
 			$scope.list = list;
 		}
 	}

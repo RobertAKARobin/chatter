@@ -17,10 +17,10 @@
 			var pub = ConvoConstructor;
 			pub.prototype = ConvoPrototype();
 			pub.ref = fbdata.id("convo/convos");
-			pub.find_all = find_all;
+			pub.read_list = read_list;
 			return pub;
 
-			function find_all(){
+			function read_list(){
 				return $firebaseArray(Convo.ref);
 			}
 		}
@@ -36,7 +36,7 @@
 
 			function create(){
 				var convo = this;
-				convo.first_message.user_id = currentUser.id;
+				convo.first_message.user_id = currentUser.uid;
 				convo.first_message.timestamp = Date.now();
 				return Convo.ref.push(this);
 			}

@@ -9,7 +9,7 @@
 	</div>
 	<div data-ng-if="currentUser.isSignedIn">
 		<img data-ng-src="{{currentUser.photoURL}}" height="50" />
-		Welcome, {{currentUser.name}}!
+		Welcome, {{currentUser.displayName}}!
 		<a href="#" data-ng-click="currentUser.signOut()">Sign out</a>
 	</div>
 </div>
