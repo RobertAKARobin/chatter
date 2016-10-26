@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("chatter", [
-			"app.core",
-			"firebase"
+		.module('chatter', [
+			'app.core',
+			'firebase'
 		]);
 
 })();

@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("app.core", [
-			"firebase"
+		.module('app.core', [
+			'firebase'
 		])
 		.config(config)
 		.run(run);
@@ -13,7 +13,7 @@
 		firebase.initializeApp(ENV);
 	}
 
-	run.$inject = ["$rootScope", "currentUser"];
+	run.$inject = ['$rootScope', 'currentUser'];
 
 	function run($rootScope, currentUser){
 		$rootScope.currentUser = currentUser;

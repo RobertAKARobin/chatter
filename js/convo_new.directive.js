@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("chatter")
-		.directive("convoNew", convoNew);
+		.module('chatter')
+		.directive('convoNew', convoNew);
 
-	convoNew.$inject = ["Convo"];
+	convoNew.$inject = ['Convo'];
 
 	function convoNew(Convo, currentUser){
 		var directive = {
-			templateUrl: "js/convo_new.directive.html",
+			templateUrl: 'js/convo_new.directive.html',
 			link: linkFunction
 		}
 		return directive;

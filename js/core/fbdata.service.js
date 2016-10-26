@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("app.core")
-		.service("fbdata", fbdata);
+		.module('app.core')
+		.service('fbdata', fbdata);
 
 	function fbdata(){
 

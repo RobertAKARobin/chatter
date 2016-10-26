@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("chatter")
-		.factory("Message", Message);
+		.module('chatter')
+		.factory('Message', Message);
 
-	Message.$inject = ["currentUser"];
+	Message.$inject = ['currentUser'];
 
 	function Message(currentUser){
 
@@ -20,9 +20,9 @@
 
 		function MessageConstructor(){
 			var message = this;
-			message.user_id = "";
-			message.timestamp = "";
-			message.content = "";
+			message.user_id = '';
+			message.timestamp = '';
+			message.content = '';
 		}
 
 	}

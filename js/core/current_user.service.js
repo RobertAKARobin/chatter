@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("app.core")
-		.service("currentUser", currentUser);
+		.module('app.core')
+		.service('currentUser', currentUser);
 
-	currentUser.$inject = ["$firebaseAuth", "User"];
+	currentUser.$inject = ['$firebaseAuth', 'User'];
 
 	function currentUser($firebaseAuth, User){
 		var currentUser = new User(),
@@ -20,7 +20,7 @@
 
 		function trySignIn(){
 			auth
-				.$signInWithPopup("google")
+				.$signInWithPopup('google')
 				.catch(authError);
 		}
 

@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("chatter")
-		.factory("Convo", Convo);
+		.module('chatter')
+		.factory('Convo', Convo);
 
-	Convo.$inject = ["$firebaseObject", "$firebaseArray", "fbdata", "currentUser", "Message"];
+	Convo.$inject = ['$firebaseObject', '$firebaseArray', 'fbdata', 'currentUser', 'Message'];
 
 	function Convo($firebaseObject, $firebaseArray, fbdata, currentUser, Message){
 
@@ -16,7 +16,7 @@
 		function ConvoClass(){
 			var pub = ConvoConstructor;
 			pub.prototype = ConvoPrototype();
-			pub.ref = fbdata.id("convo/convos");
+			pub.ref = fbdata.id('convo/convos');
 			pub.read_list = read_list;
 			return pub;
 

@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
 (function(){
 
 	angular
-		.module("app.core")
-		.factory("User", User);
+		.module('app.core')
+		.factory('User', User);
 
-	User.$inject = ["fbdata"];
+	User.$inject = ['fbdata'];
 
 	function User(fbdata){
 
@@ -16,7 +16,7 @@
 		function UserClass(){
 			var pub = UserConstructor;
 			pub.prototype = UserPrototype();
-			pub.ref = fbdata.id("users");
+			pub.ref = fbdata.id('users');
 			return pub;
 		}
 
@@ -32,9 +32,9 @@
 
 			function populate(input){
 				var user = this;
-				user.displayName	= (input.displayName || "");
-				user.uid					= (input.uid || "");
-				user.photoURL			= (input.photoURL || "");
+				user.displayName	= (input.displayName || '');
+				user.uid					= (input.uid || '');
+				user.photoURL			= (input.photoURL || '');
 				return user;
 			}
 
