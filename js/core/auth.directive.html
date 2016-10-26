@@ -1,15 +1,15 @@
 <div>
-	<div data-ng-if="!currentUser.isSignedIn">
-		<a href="#" data-ng-click="currentUser.trySignIn()">Sign in</a>
-		<ul data-ng-show="currentUser.errors">
-			<li data-ng-repeat="error in currentUser.errors">
+	<div ng-if="!currentUser.isSignedIn">
+		<a href="#" ng-click="currentUser.trySignIn()">Sign in</a>
+		<ul ng-show="currentUser.errors">
+			<li ng-repeat="error in currentUser.errors">
 				{{error.message}}
 			</li>
 		</ul>
 	</div>
-	<div data-ng-if="currentUser.isSignedIn">
-		<img data-ng-src="{{currentUser.photoURL}}" height="50" />
+	<div ng-if="currentUser.isSignedIn">
+		<img ng-src="{{currentUser.photoURL}}" height="50" />
 		Welcome, {{currentUser.displayName}}!
-		<a href="#" data-ng-click="currentUser.signOut()">Sign out</a>
+		<a href="#" ng-click="currentUser.signOut()">Sign out</a>
 	</div>
 </div>
