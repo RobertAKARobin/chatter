@@ -8,5 +8,82 @@
 
     <h1>Oh hi, Mark</h1>
 
+    <div id="user">
+      <p>Welcome, User!</p>
+    </div>
+
+    <script>
+var Estas = (function(){
+  var $Estas = $EstaClass
+  var $esta = {}
+  $Estas.prototype = $esta
+
+  $Estas.events = []
+  $Estas.all = []
+  $Estas.load = function(domObject){
+    Estas.all.push(new Estas(domObject))
+  }
+  $Estas.loadAll = function(){
+    var elms = document.querySelectorAll('[data-eval]')
+    for(var i = 0, l = elms.length; i < l; i++){
+      Estas.load(elms[i])
+    }
+  }
+
+  function $EstaClass(elm){
+    var esta = this
+    esta.elm = elm
+  }
+  $esta.eval = function(){
+    var esta = this
+    var toEval = esta.elm.getAttribute('data-eval')
+    var output = eval(toEval)
+    console.log(output)
+  }
+  $esta.listen = function(options){
+    var esta = this
+    var listenFor = options['for']
+    var thenDo = options['then']
+  }
+  $esta.clone = function(){
+    console.dir(this)
+  }
+
+  return $Estas
+})();
+
+window.onload = function(){
+  Estas.loadAll('[data-eval]')
+  for(var i = 0, l = Estas.all.length; i < l; i++){
+    Estas.all[i].eval()
+  }
+}
+    </script>
+
+    <div id="convos">
+      <div data-eval="esta.listen({for: 'newConvo'})">
+        <h2 data-eval="esta.elm.innerHTML">Lorem ipsum</h2>
+      </div>
+      <!-- <div data-eval="el.makeSiblings(Convo.all, ['convo', 'convoIndex']);">
+        <h2 data-eval="el.write(convo.title);">Lorem ipsum</h2>
+        <ul>
+          <li data-eval="this.repeat(convo.messages, ['message', 'messageIndex']);">
+            <blockquote>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus sem, tincidunt vitae tortor vitae, rutrum interdum lacus. Sed mollis finibus ornare. Ut rutrum turpis non tristique auctor.</p>
+            </blockquote>
+            <p>by
+              <span data-eval="V.write(message.user.name);">Joe Johnson</span>,
+              <span data-eval="V.write(message.date);">16/04/01 16:22</span>
+            </p>
+          </li>
+          <li data-eval="CurrentUser.on('authChange')">
+            <textarea>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus purus sem, tincidunt vitae tortor vitae, rutrum interdum lacus. Sed mollis finibus ornare. Ut rutrum turpis non tristique auctor.
+            </textarea>
+          </li>
+        </ul>
+      </div> -->
+    </div>
+
   </body>
 </html>
